@@ -1,0 +1,105 @@
+{
+    "info": {
+        "_postman_id": "9d9e5b8a-7e0a-4b9a-8e0a-4b9a8e0a4b9a",
+        "name": "Laravel Todo API",
+        "description": "API for Todo List management and Excel reporting.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Create Todo",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"title\": \"Finish Laravel Task\",\n    \"assignee\": \"Oliver\",\n    \"due_date\": \"2026-01-15\",\n    \"time_tracked\": 5.5,\n    \"status\": \"in_progress\",\n    \"priority\": \"high\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/todos",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "todos"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Export Excel Report",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/todos/export?title=Laravel&assignee=John Doe&status=in_progress&priority=high&start=2024-01-01&end=2026-12-31&min=0&max=10",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "todos",
+                        "export"
+                    ],
+                    "query": [
+                        {
+                            "key": "title",
+                            "value": "Laravel"
+                        },
+                        {
+                            "key": "assignee",
+                            "value": "John Doe"
+                        },
+                        {
+                            "key": "status",
+                            "value": "in_progress"
+                        },
+                        {
+                            "key": "priority",
+                            "value": "high"
+                        },
+                        {
+                            "key": "start",
+                            "value": "2024-01-01"
+                        },
+                        {
+                            "key": "end",
+                            "value": "2026-12-31"
+                        },
+                        {
+                            "key": "min",
+                            "value": "0"
+                        },
+                        {
+                            "key": "max",
+                            "value": "10"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000"
+        }
+    ]
+}
